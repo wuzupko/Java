@@ -1,40 +1,76 @@
 package com.company;
-import java.util.ArrayList;
-public class Dish {
-    private int price;
-    String petName;
-    int type;
-    ArrayList product;
 
-    public int getPrice() {
-        return price;
+import java.util.*;
+
+public class Dish {
+    private HashMap<Product, Double> map = new HashMap<Product, Double>();
+
+    private String petName;
+    private int category;
+
+    public HashMap<Product, Double> getMap() {
+        return map;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+
+
+    //Designers
+    public Dish() {
+    }
+
+    public Dish(String petName, int cat, HashMap<Product, Double> map) {
+
+        this.petName = petName;
+        this.category = cat;
+        this.map.putAll(map);
+    }
+
+
+
+
+    public void setPetName(String name) {
+        this.petName = name;
     }
 
     public String getPetName() {
         return petName;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setCategory(int cat) {
+        this.category = cat;
     }
 
-    public int getType() {
-        return type;
+    public int getCategory() {
+        return category;
     }
 
-    public void setType(int type) {
-        this.type = type;
+
+
+
+    public void getAll() {
+        System.out.println("Dish name: " + getPetName() + ";");
+        System.out.format("%.2f UAH", showCost() );
+        for(Map.Entry<Product, Double> entry : map.entrySet()) {
+            System.out.println("Product: " + entry.getKey().getName() + ". Weight: " +entry.getValue());
+        }
     }
 
-    public ArrayList getProduct() {
-        return product;
-    }
 
-    public void setProduct(ArrayList product) {
-        this.product = product;
+
+    public double showCost() {
+
+        double result=0;
+
+        for(Map.Entry<Product, Double> entry : map.entrySet()) {
+
+            result+=entry.getKey().getCost()*entry.getValue();
+
+
+        }
+
+        return result;
+
     }
 }
+
+

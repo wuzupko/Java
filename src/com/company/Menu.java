@@ -86,6 +86,10 @@ public class Menu {
         map.put(addProduct("Water",productList),0.2);
         map.put(addProduct("Sugar",productList),0.001);
         dishList.add( new Dish("Cofee",  0, map));
+
+        map.put(addProduct("Fruits",productList),2.0);
+        map.put(addProduct("Sugar",productList),0.01);
+        dishList.add( new Dish("Cofee",  0, map));
         map.clear();
 
 
